@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock using javacript</title>
+    <link rel="stylesheet" href="clock.css">
+</head>
+<body>
+    <div class="frame">
+        <h3 id="time_display" class="time"></h3>
+    </div>
+    <script>
+        function addzero(nm){
+            return nm<10?'0'+nm:nm;
+        }
+
+
+        function showtime(){
+            var dt=new Date();
+            var timeElement=document.getElementById('time_display');
+            var hours=dt.getHours();
+            var ampm=hours<12?'am':'pm'
+            var dates= addzero(hours%12 )+': '+addzero(dt.getMinutes())+': '+addzero(dt.getSeconds())+' '+ampm;
+            timeElement.innerHTML=dates;
+
+            setTimeout(function(){
+            showtime();
+            },1000)
+        }
+
+        showtime()
+    </script>
+</body>
+</html>
